@@ -36,6 +36,9 @@ and the total win percentage and fitness of the learning bot.
 The network output files are quite large, from 20-30mb.  Though they can be much
 smaller with any type of zip compresssion.
 
+The file "30 second simulation with test.exe" creates a network for 30 seconds,
+then tests it.  The output files can be used to see the results.
+
 
 ----- Code Structure -----
 
