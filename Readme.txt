@@ -13,7 +13,8 @@ A jpeg "Simulation in progess" displays what the program looks like.
 ----- How to Use the Program -----
 
 The program can be played like a normal pong game by one or two users if the bot
-flags are disabled.   
+flags are disabled.  The file Just Pong.exe in the dist folder allows you to try
+this.
 
 Left, Right arrow - moves player 1
 A, D - moves player 2
@@ -59,8 +60,8 @@ neuralNetwork.py:
 
 This file houses all the code for managing and updating the neural
 network within a class.  This includes code that stores learning from past games
-and provides decisions based on a current game state.  It also has functions
-that can read from and write the network to a file.
+and provides decisions about what action to take based on a current game state.  
+It also has functions that can read from and write the network to a file.
 
 The neural network itself maps data on the ball's initial angle of bounce, 
 its initial x-velocity, where the player 1 paddle attempted to hit the incoming shot,
@@ -84,7 +85,8 @@ The learning bot achieves ~30% win rate at 30 sec and ~12000 games played.
 It achives ~90% win rate at 120 sec and ~ 36000 games played.
 
 I use a metric called fitness that measures the performance of the bot for each
-game.  It gains 1 point for each successful hit and 100 points for a win.
+game.  It gains 1 point for each successful hit and 100 points for a win.  This
+is only for my information and not used by the bot internally.
 
 Here's an example of the bot's learning progression.
 
@@ -130,8 +132,9 @@ player 1: 6893 98.0 %
 player 2: 144 2.0 %
 Average Fitness = 105.68
 
-A high level of success can be achieved.  Though approaching a 100% win rate is
-logarithmic and will take an exceedingly long time with this model. 
+This network is saved as output network600E1.txt
+As shown, a high level of success can be achieved.  Though approaching a 100% win
+rate is logarithmic and will take an exceedingly long time with this model. 
 
 
 ----- Packages used -----

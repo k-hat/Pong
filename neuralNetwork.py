@@ -394,6 +394,13 @@ class NeuralNetwork:
         print()                
         print("Network size:", float('%.2f'%total),'\n')
  
+    # Checks if network has been initialized
+    def isNetworkEmpty(self):
+        
+        if(len(self.network) == 0):
+            return True
+        else:
+            return False
    
     # Deprecated test to store as binary floats vs a text file
     # def writeNetworkFloats(self, filename):

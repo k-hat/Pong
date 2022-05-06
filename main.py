@@ -10,15 +10,16 @@ def main():
     
     #network.setEntropy(1)
     #runBlankNetworkTest(network, 600, 'output network600E1.txt', False)
-    runBlankNetworkTest(network, 30, 'output network.txt', False)    
-    testCurrentNetwork(network, "output.txt", 15)
+    
+    runBlankNetworkTest(network, 30, "output network.txt", '30 second Network Creation.txt', False)    
+    testCurrentNetwork(network, "testing the network.txt", 15)
     
     #network.createBlankNetwork()
     #network.readNetwork('output network.txt')
     #network.readNetwork('output network600E1.txt')
     #network.printNetworkSize()
 
-    #pong.run(network, 'output.txt',False, 10, True)
+    #pong.run(network, 'output.txt',True, 10000, True)
     
     #network.setEntropy(0)
     #pong.run(network, 'test 10 minutes1.txt',False, 30, False)
@@ -40,11 +41,11 @@ def main():
     
     return
 
-
-def runBlankNetworkTest(network, time, networkFile, displayWindow):    
+# Run a test with a completely blank network.
+def runBlankNetworkTest(network, time, networkFile, outputFile, displayWindow):    
     
     network.createBlankNetwork()        
-    pong.run(network, 'output.txt', displayWindow, time, True)    
+    pong.run(network, outputFile, displayWindow, time, True)    
     network.writeNetwork(networkFile) 
     network.printNetworkSize()   
     return    
@@ -67,8 +68,10 @@ def runSingleTest(network, time, networkFile, displayWindow, saveNetwork, useLea
     
     return
 
-# Test the current network without learning.
+# Evaluate the current network without learning.
 def testCurrentNetwork(network, outputFile, time):
+    
+    print("Testing current network for ", time, "seconds" )
     
     pong.run(network, outputFile, False, time, False)
     

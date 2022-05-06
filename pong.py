@@ -27,6 +27,10 @@ P1WIN = 4
 # Creates and runs the pong simulation
 def run(network, outFilename, drawGame, maxTime, learningBot):
     
+    if (network.isNetworkEmpty()):
+        print("Network is uninitialized, cannot run simulation")
+        return
+    
     global verbose
     outputFile = open(outFilename, 'w')
     startingTime = time.time()
@@ -56,8 +60,8 @@ def run(network, outFilename, drawGame, maxTime, learningBot):
     # Keypress refresh rate
     pygame.key.set_repeat(15,15)
     
-    screenFont = pygame.font.Font(pygame.font.get_default_font(), fontSize)
-    halfScreenFont = pygame.font.Font(pygame.font.get_default_font(), fontSize//2)
+    screenFont = pygame.font.SysFont("Lucida Console", fontSize)
+    halfScreenFont = pygame.font.SysFont("Lucida Console", fontSize//2)
     
     if(gameWidth%15 != 0):
         print("ERROR: Game width not divisible by 15")
