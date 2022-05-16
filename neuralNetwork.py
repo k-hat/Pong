@@ -295,33 +295,37 @@ class NeuralNetwork:
 
     # Reads a network from a text file        
     def readNetwork(self, filename):
-        print('Reading network', end="")
-        self.network.clear()        
-        file = open(filename, 'r')
-        firstLine = file.readline()
-        weightList = file.readlines()            
-        if len(weightList) == 0:
-            print('\n ERROR: INPUT FILE EMPTY \n')
-            return
-            
-        firstLineList = firstLine.split()
-        self.totalGames = int(firstLineList[0])
 
-        iter = 0        
-        for a in self.angleList:
-            #print(a) 
-            for ballX in range(minXB, maxXB):                    
-                for paddleXPos in range(minXP, maxXP):
-                    for ballState in range(0,2):    
-                        self.network[(a, ballX, paddleXPos, ballState)] = float(weightList[iter])
-                        iter += 1
-                        if iter%500000 == 0:
-                            print('.', end = "")                            
-                            #print(iter)
-
-        print()
-        file.close()
-        print('Network read from ' + filename,'\n')      
+        self.network.clear()
+        
+        try:
+            with open(filename,'r') as file:
+                print('Reading network', end="")        
+                firstLine = file.readline()
+                weightList = file.readlines()            
+                if len(weightList) == 0:
+                    print('\n ERROR: INPUT FILE EMPTY \n')
+                    return
+                    
+                firstLineList = firstLine.split()
+                self.totalGames = int(firstLineList[0])
+        
+                iter = 0        
+                for a in self.angleList:
+                    #print(a) 
+                    for ballX in range(minXB, maxXB):                    
+                        for paddleXPos in range(minXP, maxXP):
+                            for ballState in range(0,2):    
+                                self.network[(a, ballX, paddleXPos, ballState)] = float(weightList[iter])
+                                iter += 1
+                                if iter%500000 == 0:
+                                    print('.', end = "")                            
+                                    #print(iter)
+                      
+                print('\nNetwork read from ' + filename,'\n')
+        except:
+            print('Could not read file: ', filename)
+                     
         return       
         
 
