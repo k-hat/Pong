@@ -50,16 +50,20 @@ class NeuralNetwork:
     #               1 = hit
     #               >1 = is a win or leads to a win
     #
+    
     network = {}
+    
     # previousState stores that last two states before the current one. With f[0]
     # being one state removed and f[1] being two states removed. 
     previousState = [[0,0,0,0],[0,0,0,0]]
+    
     currentGameHits = []
     angleTable = {}
     angleList = []
     totalGames = 0
     currentFocus = 0
     createNewDecision = True
+    
     #genetic algorithm rate or entropy - see below
     RANDOM_MOVE = 0
     totalRandomMoves = 0

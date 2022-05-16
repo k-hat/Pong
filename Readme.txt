@@ -23,7 +23,7 @@ Escape - Quits the program
 C - Toggles the frame rate limit.  Illustrates how fast the simulation moves.
 Z - Toggles between drawing the game or a display giving statistics on the simulation.  
 
-Note: C and Z are touchy given a limit of the pygame module.
+Note: C and Z are touchy given a limitation of the pygame module.
 
 Use the methods in main.py to run the desired type of test.  Each method
 requires a network object to run.
