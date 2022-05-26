@@ -31,7 +31,7 @@ requires a network object to run.
 If desired, the neural network created can be written to file.  This "bot's 
 brain" can be used later for other tests. Another output file is created that
 summarizes the simulation.  It documents every game, how many hits each bot had,
-and the total win percentage and fitness of the learning bot.
+the total win percentage, and fitness of the learning bot.
 
 The network output files are quite large, from 20-30mb.  Though they can be much
 smaller with any type of zip compresssion.
@@ -57,7 +57,6 @@ a bot that cheats and is very difficult to beat.
 pongUtil.py:
 
 It contains generic utility functions.
-
 
 neuralNetwork.py:
 

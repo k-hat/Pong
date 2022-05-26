@@ -44,7 +44,7 @@ class NeuralNetwork:
     # that led to a win.  A higher value indicates a more desirable outcome.
     #
     #
-    # network maps (angle, ballX, p1PaddleX_at_hit, ball state) -> value
+    # network maps the tuple (angle, ballX, p1PaddleX_at_hit, ball state) -> value
     #       values: 0 = not seen before 
     #               -1 = miss
     #               1 = hit
@@ -192,6 +192,7 @@ class NeuralNetwork:
                                                  int(round(p1XPos/PADDIV)), ballState]        
         return
 
+
     # Clears the previous two saved states.  Both are set to the input state.
     def clearPreviousStates(self, ballV, ballX, p1XPos, ballState):
         self.createNewDecision = True    
@@ -202,6 +203,7 @@ class NeuralNetwork:
         
         self.previousState[1] = self.previousState[0][:]
         
+        
     # Updates the previous two saved states.
     def updatePreviousStates(self, ballV, ballX, p1XPos, ballState):
         self.createNewDecision = True            
@@ -210,6 +212,7 @@ class NeuralNetwork:
                                                  ballV[1]], 
                                                  int(round(ballX/BALLDIV)), 
                                                  int(round(p1XPos/PADDIV)), ballState]                
+
 
     # Stores learned information.  It also propogates learned information to all
     # hits that lead to a win.
@@ -249,6 +252,7 @@ class NeuralNetwork:
             
         return
         
+        
     # Creates a network of all 0's
     def createBlankNetwork(self):
         self.network.clear()
@@ -268,6 +272,7 @@ class NeuralNetwork:
         print()                    
         print('Blank network created','\n')            
         return                 
+ 
  
     # Writes network to a text file
     def writeNetwork(self, filename):
@@ -327,7 +332,8 @@ class NeuralNetwork:
                                     #print(iter)
                       
                 print('\nNetwork read from ' + filename,'\n')
-        except:
+        except Exception as e:
+            print(e.__class__)
             print('Could not read file: ', filename)
                      
         return       
@@ -354,6 +360,7 @@ class NeuralNetwork:
         angle = float('%.2f'%angle)
         return angle
     
+    
     # Checks if the value for a given state is zero.  This is checked for all 
     # paddleX values.  If all are zero, then there is no information on this game 
     # state
@@ -375,6 +382,7 @@ class NeuralNetwork:
     def setEntropy(self,input):
         self.RANDOM_MOVE = input
         
+        
     # Displays a row of the network.  Used for diagnostic testing.
     def printNetworkRow(self, angle, ballX, ballState):
         
@@ -383,6 +391,7 @@ class NeuralNetwork:
             output += str(int(self.network[angle, ballX, x, ballState])) + " "
     
         print(output)
+    
     
     # Sums all the values of the network to get a rough estimate of the network
     # size.
@@ -401,6 +410,7 @@ class NeuralNetwork:
                             print('.', end = "")   
         print()                
         print("Network size:", float('%.2f'%total),'\n')
+ 
  
     # Checks if network has been initialized
     def isNetworkEmpty(self):

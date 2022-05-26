@@ -1,7 +1,6 @@
 import math
 import random
 import time
-import neuralNetwork
 
 random.seed()
 startingTime = 0
